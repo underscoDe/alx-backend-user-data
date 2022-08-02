@@ -1,4 +1,6 @@
-"""defining an authentication method"""
+#!/usr/bin/env python3
+""" Authentication helper
+"""
 
 import bcrypt
 from sqlalchemy.orm.exc import NoResultFound
