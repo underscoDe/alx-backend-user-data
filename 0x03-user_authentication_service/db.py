@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """DB module
 """
+from typing import Union
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.exc import InvalidRequestError
@@ -32,11 +33,11 @@ class DB:
             self.__session = DBSession()
         return self.__session
 
-    def add_user(self, email: str, hashed_password: str) -> User:
+    def add_user(self, email: str, hashed_password: str) -> Union[User, None]:
         """ Add a new user
         """
         if not email or not hashed_password:
-            return
+            return None
         user = User(email=email, hashed_password=hashed_password)
         session = self._session
         session.add(user)
